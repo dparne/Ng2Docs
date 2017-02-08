@@ -1,0 +1,2 @@
+- Always use types whenever possible
+- It provides some compile time type safety
