@@ -1,2 +1,4 @@
 - Always use types whenever possible
 - It provides some compile time type safety
+- Define interfaces for model types whenever they need to adhere to a contract so that we have some compile time safety
+- To make validation logic unit testable, create reactive forms in favor of template based forms

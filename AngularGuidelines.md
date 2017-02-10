@@ -7,15 +7,16 @@
 
 ### Typescript
 
-Constructor initialization creates variables by itself. So the following
+Constructor initialization creates variables by itself. So the following is recommended
 
+#### Do this
 ```
 class ExampleClass {
   constructor(private propA, private propB) {}
 }
 ```
 
-is equivalent to
+#### Don't do this
 
 ```
 class ExampleClass {
@@ -27,7 +28,6 @@ class ExampleClass {
   }
 }
 ```
-Former is the preferred choice of writing a constructor.
 
 ### Modules
 - Make use of Angular modules to group related sections of a website so that they are only loaded when the section of the website is visited
