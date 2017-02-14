@@ -67,3 +67,7 @@ var RandomNumber = (function () {
 Notice the difference between two functions. When the arrow function is used the scope of the ```this``` is automatically preserved. This is really helpful in avoiding some errors that result from event binding functions.
 
 In traditional function delaration ```this``` will reference the element calling the function.
+
+### Do's and Don'ts 
+
+There is a nice reference to some Do's and Don'ts here for typescript [Do's and Don'ts](https://www.typescriptlang.org/docs/handbook/declaration-files/do-s-and-don-ts.html)
