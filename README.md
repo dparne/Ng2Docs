@@ -1,24 +1,26 @@
 # Angular 2 Guidelines
 
+### Node
+- Using ```nvm``` is recommended to manage node installation as you can easily switch from one version to another.
+- Needs to go to top.., Setup Section
+
 ### SystemJS and Angular CLI
 - SystemJS takes care of importing appropriate javascript files when needed.
 - If you would like to not worry about the SystemJS file and managing it specifically using Angular CLI is recommended.
 - If this is your first time with Angular 2, it is recommended to understand the [bootstrap process](angular-bootstrap) of an Angular AppModule.
 
 ### Typescript
-
 - Typescript is a superscript of javascript. With static typing it is helpful in an easier transition for developers coming from an object oriented programming experience. 
 - You can find some guidelines for typescript development [here](typescript)
+
+### Angular Style Guide
+- Follow [this](https://angular.io/docs/ts/latest/guide/style-guide.html) style guide when developing angular applications
 
 ### Modules
 - Make use of Angular modules to group related sections of a website so that they are only loaded when the section of the website is visited
 - You will need to import a component once for each module if you are using them across modules.
 - Services are an exception. They are providers injected at the root level. So they are available to all modules.
 - Provide Example, Naming Conventions
-
-### Node
-- Using ```nvm``` is recommended to manage node installation as you can easily switch from one version to another.
-- Needs to go to top.., Setup Section
 
 ### Inline Templates / External Templates
 - Use ES6 specification string literal for multiline strings when writing inline html templates
