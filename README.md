@@ -3,31 +3,12 @@
 ### SystemJS and Angular CLI
 - SystemJS takes care of importing appropriate javascript files when needed.
 - If you would like to not worry about the SystemJS file and managing it specifically using Angular CLI is recommended.
-- If this is your first time with Angular 2, it is recommended to understand the bootstrap process of an Angular AppModule.
+- If this is your first time with Angular 2, it is recommended to understand the [bootstrap process](angular-bootstrap) of an Angular AppModule.
 
 ### Typescript
 
-Constructor initialization creates variables by itself. So the following is recommended
-
-#### Do this
-```
-class ExampleClass {
-  constructor(private propA, private propB) {}
-}
-```
-
-#### Don't do this
-
-```
-class ExampleClass {
-  private propA: string
-  private propB: string
-  constructor(propA, propB) {
-    this.propA = propA
-    this.propB = propB
-  }
-}
-```
+- Typescript is a superscript of javascript. With static typing it is helpful in an easier transition for developers coming from an object oriented programming experience. 
+- You can find some guidelines for typescript development [here](typescript)
 
 ### Modules
 - Make use of Angular modules to group related sections of a website so that they are only loaded when the section of the website is visited
