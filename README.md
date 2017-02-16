@@ -18,9 +18,9 @@
 
 ### Modules
 - Make use of Angular modules to group related sections of a website so that they are only loaded when the section of the website is visited
+- Please checkout the documentation [here](https://angular.io/docs/ts/latest/guide/ngmodule.html)
 - You will need to import a component once for each module if you are using them across modules.
 - Services are an exception. They are providers injected at the root level. So they are available to all modules.
-- Provide Example, Naming Conventions
 
 ### Inline Templates / External Templates
 - Use ES6 specification string literal for multiline strings when writing inline html templates
@@ -87,7 +87,6 @@
 - It is highly recommended to have the business logic in a Service
 - A service class needs to be declared as ```@Injectable``` and declared as a provider in AppModule
 - Always try to wrap third party services to make it testable.
-- Services do not have lifecycle functions
 
 ### Component Lifecycle
 - It is recommended to make use of component lifecycle interface to do the logic that needs to be done when the view is loaded etc..
@@ -101,12 +100,47 @@
 - Use __resolve__ property in your paths of appRoutes object to preload content. This is typically useful for any API calls that need to happen before showing the component to the user.
 - You can use ```routerLinkActive``` attribute to set styles by applying classes only when the route matches the ```routerLink```. But say you have ```/paths``` and ```/paths/one```, they both match ```/paths```. In this case you can specify the path to be exact by using ```[routerLinkActiveOptions]="{exact:true}"```.
 
+### Reusable Components
+
 
 ### Tips
 - Adding prefix ```+``` to an expression casts it to a number
 - Adding prefix ```!!``` to an expression casts it to a boolean
 - ```...``` is spread operator which expands an array to a set of values. It can be used to pass an array to a function which takes multiple parameters
 - Create barrels i.e ```index.ts``` files wherever possible
+
+### Guidelines to follow:
+- Make use of Angular CLI's ```ng serve``` when during development for live reload of changes or a similar pattern
+- Avoid the use of task runners (eg. gulp) as part of your development flow.
+- Consider separate index pages for production and development, using the dev libraries for development, and minified/bundled ones for production
+- Think about your routing – a refresh should almost always return the page to the exact same state or at the very least, the same screen
+- Follow the [Single Responsibility Principle](https://en.wikipedia.org/wiki/Single_responsibility_principle)
+- Make use of Typescript [interfaces](https://www.typescriptlang.org/docs/handbook/interfaces.html) for your [DTO](https://en.wikipedia.org/wiki/Data_transfer_object)'s
+- Do not manipulate DOM from your component code
+
+  Bad Example : 
+
+  ```
+  class SomeComponent {
+    hideElement() {
+      document.getElementById("random").style.display = "none";
+    }
+    showElement() {
+      document.getElementById("random").style.display = "block";
+    }
+  }
+  ```
+
+  Good Example :
+
+  ```
+  class SomeComponent {
+    elementVisible: boolean;
+  }
+  // Template
+  <div id="random" [hidden]="elementVisible"></div>
+  ```
+- Follow the pattern of [Presentational and Container Components](https://www.angular2patterns.com/08_container_and_presentational_components.html) 
 
 ### Cloud Foundry Deployment
 
