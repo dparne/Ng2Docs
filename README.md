@@ -16,16 +16,82 @@
 ### Angular Style Guide
 - Follow [this](https://angular.io/docs/ts/latest/guide/style-guide.html) style guide when developing angular applications
 
-### Modules
+### Modules & Services
 - Make use of Angular modules to group related sections of a website so that they are only loaded when the section of the website is visited
 - Please checkout the documentation [here](https://angular.io/docs/ts/latest/guide/ngmodule.html)
 - You will need to import a component once for each module if you are using them across modules.
 - Services are an exception. They are providers injected at the root level. So they are available to all modules.
+- Avoid declaring services in multiple modules
 
 ### Inline Templates / External Templates
 - Use ES6 specification string literal for multiline strings when writing inline html templates
 - Using external templates better organizes your code and keeps your component typescript file clean.
-- Examples for each...
+- If you are using Angular CLI, it always creates external templates so you don't need to worry about it.
+
+  ##### Internal Template - Avoid
+  ```
+  @Component({
+    selector: 'app-random',
+    template: `
+        <div class="gridbox">
+        <div class="gridbox-content bottom">
+          <a (click)="startFlow()">
+            <div class="img-container">
+              <div class="img-content">
+                <div class="img-border"></div>
+                <div class="img-bg"></div>
+                <img />
+              </div>
+              <div class="img-overlay"></div>
+            </div>
+            <h2>Start Flow</h2>
+          </a>
+        </div>
+      </div>
+    `
+  })
+  export class CompanyListTableComponent {
+      startFlow() {
+        //Do Something
+      }
+  }
+  ```
+
+  ##### External Template - Good
+
+  Component File
+  ```
+  import { Component} from '@angular/core';
+
+  @Component({
+    selector: 'app-random',
+    templateUrl: './random.component.html',
+    styleUrls: ['./random.component.css']
+  })
+  export class RandomComponent {
+    startFlow(){
+      //Do Something
+    }
+  }
+  ```
+  Template File
+  ```
+  <div class="gridbox">
+    <div class="gridbox-content bottom">
+      <a (click)="startFlow()">
+        <div class="img-container">
+          <div class="img-content">
+            <div class="img-border"></div>
+            <div class="img-bg"></div>
+            <img />
+          </div>
+          <div class="img-overlay"></div>
+        </div>
+        <h2>Start Flow</h2>
+      </a>
+    </div>
+  </div>
+  ```
 
 ### Data Communication
 - Use ```@Input``` and ```@Output``` declarations to pass data between parent and child components
@@ -101,7 +167,7 @@
 - You can use ```routerLinkActive``` attribute to set styles by applying classes only when the route matches the ```routerLink```. But say you have ```/paths``` and ```/paths/one```, they both match ```/paths```. In this case you can specify the path to be exact by using ```[routerLinkActiveOptions]="{exact:true}"```.
 
 ### Reusable Components
-
+- **TODO**
 
 ### Tips
 - Adding prefix ```+``` to an expression casts it to a number
@@ -149,7 +215,7 @@
 ```
 ---
 applications:
-- name: solsticeexperience
+- name: some_random_app
   buildpack: staticfile_buildpack
   disk_quota: 64M
   memory: 64M
